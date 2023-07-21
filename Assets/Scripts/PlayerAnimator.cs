@@ -8,6 +8,9 @@ public class PlayerAnimator : MonoBehaviour
     public GameObject shirt, pants;
     public Sprite[] shirtStand, shirtMove, pantsStand, pantsMove;
 
+    private int currentShirtID = 1;
+    private int currentPantsID = 1;
+
     private SpriteRenderer shirtStandRend, shirtMoveRend, pantsStandRend, pantsMoveRend;
 
     void Start()
@@ -20,8 +23,14 @@ public class PlayerAnimator : MonoBehaviour
 
     public void ChangeShirt(int shirtID)
     {
+        currentShirtID = shirtID;
+
         switch (shirtID)
         {
+            case (0):
+                shirtStandRend.sprite = null;
+                shirtMoveRend.sprite = null;
+                break;
             case (1):
                 shirtStandRend.sprite = shirtStand[0];
                 shirtMoveRend.sprite = shirtMove[0];
@@ -39,8 +48,14 @@ public class PlayerAnimator : MonoBehaviour
 
     public void ChangePants(int pantsID)
     {
+        currentPantsID = pantsID;
+
         switch (pantsID)
         {
+            case (0):
+                pantsStandRend.sprite = null;
+                pantsMoveRend.sprite = null;
+                break;
             case (1):
                 pantsStandRend.sprite = pantsStand[0];
                 pantsMoveRend.sprite = pantsMove[0];
@@ -54,5 +69,15 @@ public class PlayerAnimator : MonoBehaviour
                 pantsMoveRend.sprite = pantsMove[2];
                 break;
         }
+    }
+
+    public int GetShirtID()
+    {
+        return currentShirtID;
+    }
+
+    public int GetPantsID()
+    {
+        return currentPantsID;
     }
 }
