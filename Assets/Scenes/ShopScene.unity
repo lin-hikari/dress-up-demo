@@ -682,6 +682,7 @@ MonoBehaviour:
   - {fileID: 1342084119}
   - {fileID: 641591635}
   - {fileID: 124397407}
+  moneyText: {fileID: 2035294504}
 --- !u!1 &344812902
 GameObject:
   m_ObjectHideFlags: 0

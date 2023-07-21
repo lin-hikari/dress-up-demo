@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerInventory : MonoBehaviour
 {
     public int money;
 
     public GameObject[] yourItems, storeItems;
+
+    public TextMeshProUGUI moneyText;
 
     private int currentPrice;
 
@@ -25,6 +28,8 @@ public class PlayerInventory : MonoBehaviour
             storeItems[i].SetActive(!unlocks[i]);
         }
 
+        moneyText.text = "Money: " + money.ToString();
+
         playAnim = GetComponent<PlayerAnimator>();
     }
 
@@ -39,6 +44,8 @@ public class PlayerInventory : MonoBehaviour
 
         unlocks[itemID] = false;
         money += currentPrice;
+
+        moneyText.text = "Money: " + money.ToString();
 
         yourItems[itemID].SetActive(false);
         storeItems[itemID].SetActive(true);
@@ -64,6 +71,8 @@ public class PlayerInventory : MonoBehaviour
 
         unlocks[itemID] = true;
         money -= currentPrice;
+
+        moneyText.text = "Money: " + money.ToString();
 
         yourItems[itemID].SetActive(true);
         storeItems[itemID].SetActive(false);
