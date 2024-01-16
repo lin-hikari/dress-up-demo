@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ShopTrigger : MonoBehaviour
+public class UITrigger : MonoBehaviour
 {
-    public GameObject shopCanvas;
-    private string wrongTriggerMsg = "Shop trigger collision detected, but not from a Player";
-    private string noCanvasReference = "Shop canvas reference not set!";
+    public GameObject UICanvas;
+    private string wrongTriggerMsg = "Trigger collision detected, but not from a Player";
+    private string noCanvasReference = "UI reference not set!";
 
     void OnTriggerEnter2D(Collider2D col)
     {
@@ -15,13 +15,13 @@ public class ShopTrigger : MonoBehaviour
             Debug.Log(wrongTriggerMsg);
             return;
         }
-        if(shopCanvas == null)
+        if(UICanvas == null)
         {
             Debug.Log(noCanvasReference);
             return;
         }
 
-        shopCanvas.SetActive(true);
+        UICanvas.SetActive(true);
     }
 
     void OnTriggerExit2D(Collider2D col)
@@ -31,12 +31,12 @@ public class ShopTrigger : MonoBehaviour
             Debug.Log(wrongTriggerMsg);
             return;
         }
-        if (shopCanvas == null)
+        if (UICanvas == null)
         {
             Debug.Log(noCanvasReference);
             return;
         }
 
-        shopCanvas.SetActive(false);
+        UICanvas.SetActive(false);
     }
 }
