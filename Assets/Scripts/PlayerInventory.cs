@@ -13,15 +13,17 @@ public class PlayerInventory : MonoBehaviour
 
     private int currentPrice;
 
-    private bool[] unlocks = new bool[6]; //0 = shirt 1, 1 = pants 1, 2 = shirt 2...
+    private bool[] unlocks = new bool[6]; //even number is shirt, odd number is pants
 
     private PlayerAnimator playAnim;
 
     void Start()
     {
+        //you start with the basic shirt and pants unlocked
         unlocks[0] = true;
         unlocks[1] = true;
 
+        //initializing shop UI
         for(int i = 0; i < yourItems.Length; i++)
         {
             yourItems[i].SetActive(unlocks[i]);
@@ -50,7 +52,7 @@ public class PlayerInventory : MonoBehaviour
         yourItems[itemID].SetActive(false);
         storeItems[itemID].SetActive(true);
 
-        //overly complicated way to deal with unequipping sold items because I made mistakes with the data design :(
+        //figuring out whether the item is a shirt or pants, and if it is equipped so it is removed in that case
         if((itemID % 2) == 0)
         {
             int unequipID = (itemID / 2) + 1;
